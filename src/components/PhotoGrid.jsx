@@ -21,7 +21,7 @@ export default function PhotoGrid({
   return (
     <div>
       {showModel && (
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center px-10">
           <ModelBox img_url={modelImage} handleModel={closeModel} />
         </div>
       )}
