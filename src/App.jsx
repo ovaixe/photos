@@ -29,10 +29,7 @@ function App() {
       {loader ? (
         <Loader />
       ) : (
-        <PhotoGrid
-          images={images}
-          handleScroll={handleScroll}
-        />
+        <PhotoGrid images={images} handleScroll={handleScroll} />
       )}
     </div>
   );
