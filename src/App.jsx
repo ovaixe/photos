@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import PhotoGrid from "./components/PhotoGrid";
 import Loader from "./components/Loader";
 import { getImages, getMore } from "./utils/getData";
+import { ImagesProvider } from "./components/contexts/ImagesContext";
+import { LoaderProvider } from "./components/contexts/LoaderContext";
 
 function App() {
   const [images, setImages] = useState([]);
@@ -24,13 +26,13 @@ function App() {
   };
 
   return (
-    <div>
-      <Header setImages={setImages} setLoader={setLoader} />
-      {loader ? (
-        <Loader />
-      ) : (
-        <PhotoGrid images={images} handleScroll={handleScroll} />
-      )}
+    <div className="bg-gray-200 pb-5">
+      <ImagesProvider value={{ images, setImages }}>
+        <LoaderProvider value={{loader, setLoader}}>
+          <Header setLoader={setLoader} />
+          {loader ? <Loader /> : <PhotoGrid handleScroll={handleScroll} />}
+        </LoaderProvider>
+      </ImagesProvider>
     </div>
   );
 }

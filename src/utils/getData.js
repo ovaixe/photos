@@ -23,7 +23,7 @@ export async function getImages(setImages, setLoader) {
     } else throw Error(resp.data);
   } catch (err) {
     setLoader(false);
-    console.log("[ERROR][getData:getImages]: ", err);
+    console.log("[ERROR][getData:getImages]: ", err.message);
   }
 }
 
@@ -59,7 +59,7 @@ export async function getMore(setImages) {
       setImages((prev) => [...prev, ...img_urls]);
     } else throw Error(resp.data);
   } catch (err) {
-    console.log("[ERROR][getData:getMore]: ", err);
+    console.log("[ERROR][getData:getMore]: ", err.message);
   }
 }
 
@@ -88,6 +88,6 @@ export async function getSearch(setImages, searchValue, setLoader) {
     } else throw Error(resp.data);
   } catch (err) {
     setLoader(false);
-    console.log("[ERROR][getData:getSearch]: ", err);
+    console.log("[ERROR][getData:getSearch]: ", err.message);
   }
 }

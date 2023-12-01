@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { getSearch } from "../utils/getData";
+import { ImagesContext } from "./contexts/ImagesContext";
+import { LoaderContext } from "./contexts/LoaderContext";
 
-export default function Header({ setImages, setLoader }) {
+export default function Header() {
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
+  const imagesContext = useContext(ImagesContext);
+  const loaderContext = useContext(LoaderContext);
 
   const handleSuggestions = (e) => {
     setSearchValue(e.target.value);
@@ -16,11 +20,15 @@ export default function Header({ setImages, setLoader }) {
   };
 
   const handleSearch = (e) => {
-    if ((e.key === "Enter" && e.target.value !== "") || e.target.id === 'sug') {
+    if ((e.key === "Enter" && e.target.value !== "") || e.target.id === "sug") {
       setSuggestions([]);
       setSearchValue(e.target.value);
-      setLoader(true);
-      getSearch(setImages, e.target.value, setLoader);
+      loaderContext.setLoader(true);
+      getSearch(
+        imagesContext.setImages,
+        e.target.value,
+        loaderContext.setLoader
+      );
       let suggestions = localStorage.getItem("suggestions");
       if (suggestions) {
         suggestions = JSON.parse(suggestions);
@@ -51,7 +59,7 @@ export default function Header({ setImages, setLoader }) {
         <div className="w-[50%] md:w-[40%] lg:w-[30%] h-auto top-[85%] absolute rounded-md bg-white border border-gray-300 p-3 flex flex-col space-y-3">
           {suggestions.map((sug, index) => (
             <div className="flex" key={index}>
-              <button 
+              <button
                 id="sug"
                 value={sug}
                 className="px-2 py-1 rounded-md bg-gray-200 flex"
