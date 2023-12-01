@@ -35,15 +35,15 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 ## Technologies Used
 
-### React: This web app is built using the React library, providing a modular and efficient structure for the project.
+React: This web app is built using the React library, providing a modular and efficient structure for the project.
 
-### Tailwind CSS: Styling is done using Tailwind css, allowing for a more structured and maintainable stylesheet.
+Tailwind CSS: Styling is done using Tailwind css, allowing for a more structured and maintainable stylesheet.
 
-### Flickr API: This app leverages the Flickr API to fetch images and enrich the user experience with a diverse range of visual content.
+Flickr API: This app leverages the Flickr API to fetch images and enrich the user experience with a diverse range of visual content.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE] (https://github.com/ovaixe/photos/blob/main/LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/ovaixe/photos/blob/main/LICENSE) file for details.
 
 
 ## Learn More
