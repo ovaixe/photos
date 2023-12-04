@@ -14,6 +14,14 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    window.addEventListener("scroll", (e) => {
+      const totalHeight = document.body.offsetHeight;
+      const scrollHeight = window.scrollY;
+      console.log('totalHeight >>>>', totalHeight);
+      console.log('scrollHeight >>>>>', scrollHeight);
+      if (scrollHeight + 931 >= totalHeight) handleLoadMore();
+    });
+
     getImages()
       .then((data) => {
         imagesContext.setImages(data);

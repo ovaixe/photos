@@ -30,7 +30,7 @@ export async function getImages() {
 export async function getMore() {
   try {
     let img_data = JSON.parse(sessionStorage.getItem("img_data"));
-    if (img_data.cur_page === img_data.total_pages) return;
+    if (img_data.cur_page === img_data.total_pages) return [];
 
     img_data.cur_page += 1;
     sessionStorage.setItem("img_data", JSON.stringify(img_data));
@@ -54,6 +54,9 @@ export async function getMore() {
         (photo) =>
           `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
       );
+
+      console.log('more >>>>>', img_data.cur_page)
+      console.log('more >>>>>', img_urls)
 
       return img_urls;
     } else throw Error(resp.data);
