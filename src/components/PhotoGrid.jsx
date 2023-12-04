@@ -29,7 +29,7 @@ export default function PhotoGrid({ handleScroll }) {
         className={`flex ${modelBoxContext.showModel ? "pointer-events-none opacity-50 bg-[rgba(0,0,0,0.5)]" : ""}`}
       >
         <div
-          className="w-full p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth h-new overflow-y-scroll"
+          className="w-full p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth h-min-screen overflow-y-scroll"
           onScroll={handleScroll}
         >
           {imagesContext.images.map((image, index) => (
