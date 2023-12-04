@@ -16,7 +16,7 @@ module.exports = {
         wiggle: "wiggle .3s ease-in-out",
       },
       boxShadow: {
-        "3xl": "0 0 80px 80px rgba(0, 0, 0, 1)",
+        "3xl": "0px 0px 500px rgba(116, 116, 116, 1), -0px -0px 500px rgba(116, 116, 116, 1)",
       },
     },
   },

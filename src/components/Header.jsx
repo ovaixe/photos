@@ -2,17 +2,19 @@ import { useState, useContext } from "react";
 import { getSearch } from "../utils/getData";
 import { ImagesContext } from "./contexts/ImagesContext";
 import { LoaderContext } from "./contexts/LoaderContext";
+import { ModelBoxContext } from "./contexts/ModelBoxContext";
 
 export default function Header() {
   const [searchValue, setSearchValue] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const imagesContext = useContext(ImagesContext);
   const loaderContext = useContext(LoaderContext);
+  const modelBoxContext = useContext(ModelBoxContext);
 
   const handleSuggestions = (e) => {
     setSearchValue(e.target.value);
     let suggestions = localStorage.getItem("suggestions");
-    if (suggestions && e.target.value !== "") {
+    if (suggestions && e.target.value) {
       suggestions = JSON.parse(suggestions);
       const temp = suggestions.filter((sug) => sug.includes(e.target.value));
       temp.length !== 0 ? setSuggestions(temp) : setSuggestions([]);
@@ -20,15 +22,19 @@ export default function Header() {
   };
 
   const handleSearch = (e) => {
-    if ((e.key === "Enter" && e.target.value !== "") || e.target.id === "sug") {
+    if ((e.key === "Enter" && e.target.value) || e.target.id === "sug") {
       setSuggestions([]);
       setSearchValue(e.target.value);
       loaderContext.setLoader(true);
-      getSearch(
-        imagesContext.setImages,
-        e.target.value,
-        loaderContext.setLoader
-      );
+      getSearch(e.target.value)
+        .then((data) => {
+          imagesContext.setImages(data);
+          loaderContext.setLoader(false);
+        })
+        .catch((err) => {
+          console.log("ERROR: ", err.message);
+          loaderContext.setLoader(false);
+        });
       let suggestions = localStorage.getItem("suggestions");
       if (suggestions) {
         suggestions = JSON.parse(suggestions);
@@ -43,8 +49,12 @@ export default function Header() {
     }
   };
 
+  const handleModelBox = () => {
+    modelBoxContext.setShowModel(false);
+  }
+
   return (
-    <div className="flex flex-col justify-center items-center h-28 bg-gray-800 sticky top-0 z-50">
+    <div className="flex flex-col justify-center items-center h-28 bg-gray-800 sticky top-0 z-50" onClick={handleModelBox}>
       <div className="text-lg text-white">Search Photos</div>
       <input
         type="text"

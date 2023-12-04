@@ -2,7 +2,7 @@ import axios from "axios";
 import config from "../config/config.json";
 
 // This function gets data by default
-export async function getImages(setImages, setLoader) {
+export async function getImages() {
   try {
     const resp = await axios.get(config.URL, { params: config.params });
 
@@ -18,17 +18,16 @@ export async function getImages(setImages, setLoader) {
           `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
       );
 
-      setImages(img_urls);
-      setLoader(false);
+      return img_urls;
     } else throw Error(resp.data);
   } catch (err) {
-    setLoader(false);
     console.log("[ERROR][getData:getImages]: ", err.message);
+    throw Error(err);
   }
 }
 
 // This function gets data on infinite scroll
-export async function getMore(setImages) {
+export async function getMore() {
   try {
     let img_data = JSON.parse(sessionStorage.getItem("img_data"));
     if (img_data.cur_page === img_data.total_pages) return;
@@ -56,15 +55,16 @@ export async function getMore(setImages) {
           `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
       );
 
-      setImages((prev) => [...prev, ...img_urls]);
+      return img_urls;
     } else throw Error(resp.data);
   } catch (err) {
     console.log("[ERROR][getData:getMore]: ", err.message);
+    throw Error(err);
   }
 }
 
 // This function get data on search
-export async function getSearch(setImages, searchValue, setLoader) {
+export async function getSearch(searchValue) {
   try {
     const new_params = { ...config.search_params, text: searchValue };
     const resp = await axios.get(config.URL, { params: new_params });
@@ -83,11 +83,10 @@ export async function getSearch(setImages, searchValue, setLoader) {
           `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
       );
 
-      setImages(img_urls);
-      setLoader(false);
+      return img_urls
     } else throw Error(resp.data);
   } catch (err) {
-    setLoader(false);
     console.log("[ERROR][getData:getSearch]: ", err.message);
+    throw Error(err);
   }
 }
