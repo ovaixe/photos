@@ -2,7 +2,7 @@ export default function ModelBox({ imgUrl, handleModel }) {
   return (
     <div
       tabIndex={-1}
-      className="flex flex-col animate-wiggle w-auto h-auto z-[1055] border-4 border-gray-800 bg-gray-800 fixed top-52 rounded-lg drop-shadow-2xl shadow-2xl"
+      className="flex flex-col animate-wiggle w-auto h-auto z-[1055] border-4 border-gray-800 bg-gray-800 fixed top-32 rounded-lg drop-shadow-2xl shadow-2xl"
     >
       <div className="flex items-center justify-end p-1">
         <button className="text-white bg-red-400 rounded-full" onClick={handleModel}>
