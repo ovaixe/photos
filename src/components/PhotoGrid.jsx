@@ -33,12 +33,12 @@ export default function PhotoGrid({ handleScroll }) {
         onClick={handleCloseModel}
         onScroll={handleScroll}
         className={`p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth overflow-y-auto h-new ${
-          modelBoxContext.showModel ? "opacity-50 bg-[rgba(0,0,0,0.5)]" : ""
+          modelBoxContext.showModel ? "opacity-50" : ""
         }`}
       >
-          {imagesContext.images.map((image, index) => (
-            <PhotoCard key={index} image={image} handleModel={openModel} />
-          ))}
+        {imagesContext.images.map((image, index) => (
+          <PhotoCard key={index} image={image} handleModel={openModel} />
+        ))}
       </div>
     </div>
   );

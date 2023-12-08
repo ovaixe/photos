@@ -6,22 +6,15 @@ import Error from "./components/Error";
 import { getImages, getMore } from "./utils/getData";
 import { ImagesContext } from "./components/contexts/ImagesContext";
 import { LoaderContext } from "./components/contexts/LoaderContext";
-import { ModelBoxProvider } from "./components/contexts/ModelBoxContext";
+import { ModelBoxContext } from "./components/contexts/ModelBoxContext";
 
 function App() {
   const imagesContext = useContext(ImagesContext);
   const loaderContext = useContext(LoaderContext);
+  const modelBoxContext = useContext(ModelBoxContext);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // window.addEventListener("scroll", (e) => {
-    //   const totalHeight = document.body.offsetHeight;
-    //   const scrollHeight = window.scrollY;
-    //   console.log('totalHeight >>>>', totalHeight);
-    //   console.log('scrollHeight >>>>>', scrollHeight);
-    //   if (scrollHeight + 931 >= totalHeight) handleLoadMore();
-    // });
-
     getImages()
       .then((data) => {
         imagesContext.setImages(data);
@@ -52,19 +45,21 @@ function App() {
   };
 
   return (
-    <div className="pb-5">
-      <ModelBoxProvider>
-        <Header />
-        <div className="flex-1 mt-32">
-          {loaderContext.loader ? (
-            <Loader />
-          ) : error ? (
-            <Error message={error} />
-          ) : (
-            <PhotoGrid handleScroll={handleScroll} />
-          )}
-        </div>
-      </ModelBoxProvider>
+    <div
+      className={`py-5 ${
+        modelBoxContext.showModel ? "bg-[rgba(0,0,0,0.5)]" : ""
+      }`}
+    >
+      <Header />
+      <div className={`flex-1 mt-32`}>
+        {loaderContext.loader ? (
+          <Loader />
+        ) : error ? (
+          <Error message={error} />
+        ) : (
+          <PhotoGrid handleScroll={handleScroll} />
+        )}
+      </div>
     </div>
   );
 }
