@@ -21,7 +21,7 @@ export default function PhotoCard({ image, handleModel }) {
           src={image}
           alt="img"
           onLoad={handleLoadImage}
-          className="w-auto h-auto rounded-xl object-cover"
+          className="w-auto h-auto rounded-lg object-cover"
         ></img>
       </button>
     </div>

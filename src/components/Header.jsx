@@ -54,7 +54,7 @@ export default function Header() {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center h-28 bg-gray-800 sticky top-0 z-50" onClick={handleModelBox}>
+    <div className="w-full flex flex-col justify-center items-center h-28 bg-gray-800 fixed top-0 z-50" onClick={handleModelBox}>
       <div className="text-lg text-white">Search Photos</div>
       <input
         type="text"

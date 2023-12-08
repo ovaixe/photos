@@ -14,13 +14,13 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    window.addEventListener("scroll", (e) => {
-      const totalHeight = document.body.offsetHeight;
-      const scrollHeight = window.scrollY;
-      console.log('totalHeight >>>>', totalHeight);
-      console.log('scrollHeight >>>>>', scrollHeight);
-      if (scrollHeight + 931 >= totalHeight) handleLoadMore();
-    });
+    // window.addEventListener("scroll", (e) => {
+    //   const totalHeight = document.body.offsetHeight;
+    //   const scrollHeight = window.scrollY;
+    //   console.log('totalHeight >>>>', totalHeight);
+    //   console.log('scrollHeight >>>>>', scrollHeight);
+    //   if (scrollHeight + 931 >= totalHeight) handleLoadMore();
+    // });
 
     getImages()
       .then((data) => {
@@ -55,13 +55,15 @@ function App() {
     <div className="pb-5">
       <ModelBoxProvider>
         <Header />
-        {loaderContext.loader ? (
-          <Loader />
-        ) : error ? (
-          <Error message={error} />
-        ) : (
-          <PhotoGrid handleScroll={handleScroll} />
-        )}
+        <div className="flex-1 mt-32">
+          {loaderContext.loader ? (
+            <Loader />
+          ) : error ? (
+            <Error message={error} />
+          ) : (
+            <PhotoGrid handleScroll={handleScroll} />
+          )}
+        </div>
       </ModelBoxProvider>
     </div>
   );

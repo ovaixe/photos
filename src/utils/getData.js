@@ -19,10 +19,10 @@ export async function getImages() {
       );
 
       return img_urls;
-    } else throw Error(resp.data);
+    } else throw resp.data;
   } catch (err) {
     console.log("[ERROR][getData:getImages]: ", err.message);
-    throw Error(err);
+    throw err;
   }
 }
 
