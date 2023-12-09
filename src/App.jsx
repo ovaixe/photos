@@ -46,12 +46,12 @@ function App() {
 
   return (
     <div
-      className={`py-5 ${
+      className={`${
         modelBoxContext.showModel ? "bg-[rgba(0,0,0,0.5)]" : ""
       }`}
     >
       <Header />
-      <div className={`flex-1 mt-32`}>
+      <div className={``}>
         {loaderContext.loader ? (
           <Loader />
         ) : error ? (

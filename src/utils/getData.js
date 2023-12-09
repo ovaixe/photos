@@ -55,9 +55,6 @@ export async function getMore() {
           `https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`
       );
 
-      console.log('more >>>>>', img_data.cur_page)
-      console.log('more >>>>>', img_urls)
-
       return img_urls;
     } else throw Error(resp.data);
   } catch (err) {

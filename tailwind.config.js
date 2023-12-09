@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       height: {
-        new: "calc(100vh - 170px)",
+        new: "calc(100vh - 112px)",
       },
       keyframes: {
         wiggle: {
