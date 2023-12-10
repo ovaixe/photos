@@ -23,7 +23,7 @@ export default function PhotoGrid({ handleScroll }) {
   };
 
   return (
-    <div>
+    <div className="">
       {modelBoxContext.showModel && (
         <div className="flex items-center justify-center px-10">
           <ModelBox imgUrl={modelImage} handleModel={closeModel} />
@@ -32,7 +32,7 @@ export default function PhotoGrid({ handleScroll }) {
       <div
         onClick={handleCloseModel}
         onScroll={handleScroll}
-        className={`p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth overflow-y-scroll h-new ${
+        className={`p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth overflow-y-scroll h-grid ${
           modelBoxContext.showModel ? "opacity-50" : ""
         }`}
       >
