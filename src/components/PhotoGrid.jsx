@@ -32,7 +32,7 @@ export default function PhotoGrid({ handleScroll }) {
       <div
         onClick={handleCloseModel}
         onScroll={handleScroll}
-        className={`p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 scroll-smooth overflow-y-scroll h-grid ${
+        className={`p-5 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4 scroll-smooth overflow-y-scroll h-grid ${
           modelBoxContext.showModel ? "opacity-50" : ""
         }`}
       >
