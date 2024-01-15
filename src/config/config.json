@@ -2,14 +2,14 @@
   "URL": "https://www.flickr.com/services/rest/",
   "params": {
     "method": "flickr.photos.getRecent",
-    "api_key": "fbac53b9c1e3f72507a48279c2b923b0",
+    "api_key": "35cfaa1775ddbadc656c3be2fabd5ce3",
     "safe_search": "1",
     "format": "json",
     "nojsoncallback": "1"
   },
   "search_params": {
     "method": "flickr.photos.search",
-    "api_key": "fbac53b9c1e3f72507a48279c2b923b0",
+    "api_key": "35cfaa1775ddbadc656c3be2fabd5ce3",
     "safe_search": "1",
     "format": "json",
     "nojsoncallback": "1"
